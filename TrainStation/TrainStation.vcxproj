@@ -127,7 +127,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AgeDiscountCard.cpp" />
+    <ClCompile Include="DiscountCard.cpp" />
+    <ClCompile Include="FirstClassWagon.cpp" />
+    <ClCompile Include="PassengerClassWagon.cpp" />
+    <ClCompile Include="RouteDiscountCard.cpp" />
+    <ClCompile Include="SleepingWagon.cpp" />
+    <ClCompile Include="Station.cpp" />
+    <ClCompile Include="Train.cpp" />
     <ClCompile Include="TrainStation.cpp" />
+    <ClCompile Include="Wagon.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AgeDiscountCard.h" />
+    <ClInclude Include="DiscountCard.h" />
+    <ClInclude Include="FirstClassWagon.h" />
+    <ClInclude Include="PassengerClassWagon.h" />
+    <ClInclude Include="RouteDiscountCard.h" />
+    <ClInclude Include="SleepingWagon.h" />
+    <ClInclude Include="Station.h" />
+    <ClInclude Include="Train.h" />
+    <ClInclude Include="Wagon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
