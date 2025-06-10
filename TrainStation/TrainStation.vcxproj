@@ -143,6 +143,7 @@
     <ClInclude Include="DiscountCard.h" />
     <ClInclude Include="FirstClassWagon.h" />
     <ClInclude Include="PassengerClassWagon.h" />
+    <ClInclude Include="Resources.h" />
     <ClInclude Include="RouteDiscountCard.h" />
     <ClInclude Include="SleepingWagon.h" />
     <ClInclude Include="Station.h" />
