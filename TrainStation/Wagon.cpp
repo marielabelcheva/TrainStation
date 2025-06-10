@@ -2,6 +2,11 @@
 #include <iostream>
 #include "Resources.h"
 
+namespace constants
+{
+	const int ID_CHARECTERS_COUNT = 4;
+}
+
 void Wagon::copyFrom(const Wagon& other)
 {
 	this->seats = other.seats;
@@ -68,7 +73,7 @@ Wagon& Wagon::operator=(Wagon&& other) noexcept
 
 void Wagon::setID()
 {
-	this->id = ID_Resources::generateID(constants::wagon::ID_CHARECTERS_COUNT);
+	this->id = ID_Resources::generateID(constants::ID_CHARECTERS_COUNT);
 }
 
 void Wagon::setSeats(int seatsCount)
