@@ -45,6 +45,15 @@
     <ClCompile Include="AgeDiscountCard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DistanceDiscountCard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Admin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Wagon.h">
@@ -76,6 +85,15 @@
     </ClInclude>
     <ClInclude Include="Resources.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DistanceDiscountCard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Admin.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

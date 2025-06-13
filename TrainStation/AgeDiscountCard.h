@@ -3,5 +3,10 @@
 
 class AgeDiscountCard : public DiscountCard
 {
+	int cardHoldersAge;
+
+	// G6
+
+
 };
 

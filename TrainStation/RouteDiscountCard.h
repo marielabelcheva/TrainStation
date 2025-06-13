@@ -3,5 +3,8 @@
 
 class RouteDiscountCard : public DiscountCard
 {
+	char* destinationName;
+
+	// G6
 };
 
