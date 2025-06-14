@@ -2,12 +2,13 @@
 
 class Wagon
 {
-	int* seats;
+	bool* seats;
+	int seatsCount;
 	int id;
 	double basePrice;
 
 	void setID();
-	void setSeats(int seatsCount);
+	void setSeats(int count);
 	void setBasePrice(double basePrice);
 
 protected:
@@ -28,9 +29,13 @@ public:
 	Wagon& operator=(Wagon&& other) noexcept;
 
 	const int getID() const;
-	int* getSeats() const;
+	bool* getSeats() const;
 
 	virtual double ticketPrice() = 0;
+
+	void printWagon() const;
+
+	void buyTicket(int seat);
 
 	virtual ~Wagon();
 };

@@ -76,15 +76,10 @@ void Wagon::setID()
 	this->id = ID_Resources::generateID(constants::ID_CHARECTERS_COUNT);
 }
 
-void Wagon::setSeats(int seatsCount)
+void Wagon::setSeats(int count)
 {
-	if (seatsCount <= 0)
-	{
-		this->seats = nullptr;
-		throw std::invalid_argument("Count of the seats must be bigger than 0!");
-	}
-
-	this->seats = new int[seatsCount];
+	this->seatsCount = count;
+	this->seats = new bool[this->seatsCount] {false};
 }
 
 void Wagon::setBasePrice(double basePrice)
@@ -97,12 +92,83 @@ void Wagon::setBasePrice(double basePrice)
 	this->basePrice = basePrice;
 }
 
+void Wagon::buyTicket(int seat)
+{
+	if (seat < 0 || seat > this->seatsCount)
+	{
+		throw std::invalid_argument("Invalid seat!");
+	}
+
+	this->seats[seat - 1] ? throw std::invalid_argument("The seat has already been taken!") : this->seats[seat - 1] = true;
+}
+
+void printFirstRow(int charsCount)
+{
+	for (size_t i = 1; i < charsCount; i++)
+	{
+		std::cout << "_";
+	}
+}
+
+void printMiddleRow(int cols, bool value, int& index, int row)
+{
+	std::cout << "|";
+
+	for (size_t j = 0; j < cols; j++)
+	{
+		if (row % 2 == 0)
+		{
+			if (value)
+			{
+				std::cout << "xx";
+			}
+			else
+			{
+				if (index + 1 < 10)
+				{
+					std::cout << "0";
+				}
+				std::cout << index + 1;
+			}
+			index++;
+		}
+		else
+		{
+			std::cout << "  ";
+		}
+
+		std::cout << " ";
+	}
+
+	std::cout << "|\n";
+}
+
+void Wagon::printWagon() const
+{
+	int cols = this->seatsCount / 5;
+	int index = 0;
+
+	int charsOnRow = 3 * cols + 1;
+
+	std::cout << " ";
+	printFirstRow(charsOnRow);
+	std::cout << "\n";
+
+	for (size_t i = 0; i < 9; i++)
+	{
+		printMiddleRow(cols, this->seats[index], index, i);
+	}
+	std::cout << "|";
+	printFirstRow(charsOnRow);
+	std::cout << "|";
+}
+
 const int Wagon::getID() const
 {
 	return this->id;
 }
 
-int* Wagon::getSeats() const
+bool* Wagon::getSeats() const
 {
 	return this->seats;
 }
