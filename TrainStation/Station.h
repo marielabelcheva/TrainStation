@@ -13,7 +13,7 @@ class Station
 	void free();
 
 	void setName(const char* name);
-	void setAvailablePlatform(); // TODO
+	void setAvailablePlatform();
 
 public:
 	Station(const char* name);
@@ -28,8 +28,8 @@ public:
 
 	void addTrain(Train& train);
 
-	void printDeparturedTrains(); //TODO
-	void printArrivalTrains(); //TODO
+	void printDeparturedTrains();
+	void printArrivalTrains();
 
 	~Station();
 };

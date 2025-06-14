@@ -5,8 +5,11 @@
 
 class Train
 {
+public:
 	Station* departureStation;
 	Station* arrivalStation;
+
+private:
 	struct tm departureDateAndTime;
 	struct tm arrivalDateAndTime;
 	int departurePlatform;
@@ -50,7 +53,10 @@ public:
 
 	const int getTrainId() const;
 
-	const char* printTime(struct tm field) const;
+	const char* printDepartureTime() const;
+	const char* printArrivalTime() const;
+
+	bool isTrainDepartured() const;
 
 	void printWagons();
 	void printTrainInfo();

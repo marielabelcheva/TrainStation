@@ -40,19 +40,15 @@ void Station::setName(const char* name)
 
 void Station::setAvailablePlatform()
 {
-	if (!this->trains)
-	{
-		this->availablePlatform = 1;
-	}
+	this->availablePlatform++;
 
-	else
+	for (size_t i = 0; i < trainsCount; i++)
 	{
-		this->availablePlatform++;
-		/*int i = 0;
-		while (*this->trains)
+		if (this->trains[i]->isTrainDepartured())
 		{
-			if (this->trains[i]->printTime()
-		}*/
+			this->availablePlatform = this->trains[i]->getDeparturePlatform();
+			break;
+		}
 	}
 }
 
@@ -118,20 +114,63 @@ void Station::addTrain(Train& train)
 	this->trainsCount++;
 }
 
+void printLine()
+{
+	for (size_t i = 0; i < 128; i++)
+	{
+		std::cout << "-";
+	}
+	std::cout << "\n";
+}
+
+bool isEqual(const char* str1, const char* str2)
+{
+	while (*str1 || *str2)
+	{
+		if (*str1 != *str2)
+		{
+			return false;
+		}
+
+		str1++;
+		str2++;
+	}
+	return true;
+}
+
 void Station::printDeparturedTrains()
 {
-	/*for (size_t i = 0; i < this->trainsCount; i++)
+	std::cout << "Departures:\n";
+	printLine();
+	std::cout << "| Departure Time   | Arrival Time    | Destination   | Departure Platform | Train ID | Status   |";
+	printLine();
+	for (size_t i = 0; i < this->trainsCount; i++)
 	{
-		this->trains[i].
-	}*/
+		if (isEqual(this->trains[i]->departureStation->getName(), this->name))
+		{
+			std::cout << "| " << this->trains[i]->printDepartureTime() << "  | " << this->trains[i]->printArrivalTime();
+			std::cout << "  | " << this->trains[i]->arrivalStation->getName() << "  | " << this->trains[i]->getDeparturePlatform();
+			std::cout << "      | " << this->trains[i]->getTrainId() << "    | ";
+			std::cout << (this->trains[i]->isTrainDepartured() ? "Departed" : "To depart") << "   |\n";
+		}
+	}
 }
 
 void Station::printArrivalTrains()
 {
-	/*for (size_t i = 0; i < this->trainsCount; i++)
+	std::cout << "Arrivals:\n";
+	printLine();
+	std::cout << "| Arrival Time   | Arrival Platform | Train ID | Starting Station |";
+	printLine();
+	for (size_t i = 0; i < this->trainsCount; i++)
 	{
-		this->trains[i].
-	}*/
+		if (isEqual(this->trains[i]->arrivalStation->getName(), this->name))
+		{
+			std::cout << "| " << this->trains[i]->printArrivalTime() << "  | " << this->trains[i]->getArrivalPlatform();
+			std::cout << "    | " << this->trains[i]->getTrainId() << " | ";
+			std::cout << this->trains[i]->departureStation->getName() << " |\n";
+		}
+	}
 }
 
 Station::~Station()

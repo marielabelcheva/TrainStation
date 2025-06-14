@@ -233,10 +233,18 @@ const int Train::getTrainId() const
 	return this->id;
 }
 
-const char* Train::printTime(struct tm field) const
+const char* Train::printDepartureTime() const
 {
 	char* date = new char[constants::MAX_DATETIME_SIZE];
-	strftime(date, constants::MAX_DATETIME_SIZE, "%H:%M %d.%m.%Y", &field);
+	strftime(date, constants::MAX_DATETIME_SIZE, "%H:%M %d.%m.%Y", &this->departureDateAndTime);
+
+	return date;
+}
+
+const char* Train::printArrivalTime() const
+{
+	char* date = new char[constants::MAX_DATETIME_SIZE];
+	strftime(date, constants::MAX_DATETIME_SIZE, "%H:%M %d.%m.%Y", &this->arrivalDateAndTime);
 
 	return date;
 }
@@ -258,11 +266,38 @@ void Train::printTrainInfo()
 	std::cout << "Destination: " << this->arrivalStation->getName() << "\n";
 	std::cout << "Distance:" << this->distanceBetweenStationsInKM << "km\n";
 	std::cout << "Speed: " << this->speed << "km/h\n";
-	std::cout << "Departure Time: " << this->printTime(this->departureDateAndTime) << "\n";
-	std::cout << "Arrival Time: " << this->printTime(this->arrivalDateAndTime) << "\n";
+	std::cout << "Departure Time: " << this->printDepartureTime() << "\n";
+	std::cout << "Arrival Time: " << this->printArrivalTime() << "\n";
 	std::cout << "Departure Platform: " << this->getDeparturePlatform() << "\n\n";
 
 	this->printWagons();
+}
+
+bool isBigger(const char* str1, const char* str2)
+{
+	while (*str1)
+	{
+		if (*str1 <= *str2)
+		{
+			return false;
+		}
+
+		str1++;
+		str2++;
+	}
+
+	return true;
+}
+
+bool Train::isTrainDepartured() const
+{
+	time_t timestamp = time(NULL);
+	struct tm now = *localtime(&timestamp);
+
+	char* date = new char[constants::MAX_DATETIME_SIZE];
+	strftime(date, constants::MAX_DATETIME_SIZE, "%H:%M %d.%m.%Y", &now);
+
+	return isBigger(this->printDepartureTime(), date);
 }
 
 Train::~Train()
