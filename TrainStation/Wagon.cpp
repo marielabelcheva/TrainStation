@@ -37,6 +37,7 @@ Wagon::Wagon(int seatsCount, double basePrice)
 	setID();
 	setSeats(seatsCount);
 	setBasePrice(basePrice);
+	this->wagonType = nullptr;
 }
 
 Wagon::Wagon(const Wagon& other)
@@ -90,6 +91,12 @@ void Wagon::setBasePrice(double basePrice)
 	}
 
 	this->basePrice = basePrice;
+}
+
+void Wagon::setWagonType(const char* type)
+{
+	this->wagonType = new char[string::strLen(type) + 1];
+	string::strCopy(type, this->wagonType);
 }
 
 void Wagon::buyTicket(int seat)
@@ -178,6 +185,11 @@ const double Wagon::getBasePrice() const
 	return this->basePrice;
 }
 
+
+const char* Wagon::getWagonType() const
+{
+	return this->wagonType;
+}
 Wagon::~Wagon()
 {
 	free();

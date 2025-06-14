@@ -4,7 +4,7 @@
 
 namespace constants
 {
-	const int ID_CHARECTERS_COUNT = 6;
+	const int ID_CHARECTERS_COUNT = 4;
 	const int MINUTES_IN_AN_HOUR = 60;
 	const size_t MAX_DATETIME_SIZE = (size_t)"hh:mm dd.MM.yyyy" + 1;
 }
@@ -174,6 +174,19 @@ Train& Train::operator=(Train&& other)
 	return *this;
 }
 
+size_t Train::findWagon(int wagonId)
+{
+	for (size_t i = 0; i < this->wagonsCount; i++)
+	{
+		if (this->wagons[i]->getID() == wagonId)
+		{
+			return i;
+		}
+	}
+
+	throw std::invalid_argument("Invalid id!");
+}
+
 void Train::addWagon(Wagon& wagon)
 {
 	if (!this->wagons)
@@ -184,6 +197,25 @@ void Train::addWagon(Wagon& wagon)
 	this->wagons[this->wagonsCount] = &wagon;
 
 	this->wagonsCount++;
+}
+
+void Train::removeWagon(int wagonId)
+{
+	try
+	{
+		size_t index = findWagon(wagonId);
+
+		for (int i = index; i < this->wagonsCount - 1; i++)
+		{
+			this->wagons[i] = this->wagons[i + 1];
+		}
+
+		this->wagonsCount--;
+	}
+	catch (std::invalid_argument e)
+	{
+		std::cout << e.what();
+	}
 }
 
 const int Train::getDeparturePlatform() const
@@ -211,12 +243,26 @@ const char* Train::printTime(struct tm field) const
 
 void Train::printWagons()
 {
+	std::cout << "Wagons\n";
 
+	for (size_t i = 0; i < this->wagonsCount; i++)
+	{
+		std::cout << (i + 1) << " - " << this->wagons[i]->getWagonType() << "\n";
+	}
 }
 
 void Train::printTrainInfo()
 {
+	std::cout << "===Train ID: " << this->getTrainId() << "===\n";
+	std::cout << "Strarting station: " << this->departureStation->getName() << "\n";
+	std::cout << "Destination: " << this->arrivalStation->getName() << "\n";
+	std::cout << "Distance:" << this->distanceBetweenStationsInKM << "km\n";
+	std::cout << "Speed: " << this->speed << "km/h\n";
+	std::cout << "Departure Time: " << this->printTime(this->departureDateAndTime) << "\n";
+	std::cout << "Arrival Time: " << this->printTime(this->arrivalDateAndTime) << "\n";
+	std::cout << "Departure Platform: " << this->getDeparturePlatform() << "\n\n";
 
+	this->printWagons();
 }
 
 Train::~Train()

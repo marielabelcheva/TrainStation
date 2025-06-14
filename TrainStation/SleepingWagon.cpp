@@ -11,6 +11,7 @@ SleepingWagon::SleepingWagon(double basePrice, double pricePer100km, int distanc
 {
 	setDistanceInKm(distance);
 	setPricePer100km(pricePer100km);
+	setWagonType("Sleeping Class");
 }
 
 void SleepingWagon::setDistanceInKm(int kilometres)

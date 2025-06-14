@@ -40,7 +40,10 @@ public:
 	Train(Train&& other) noexcept;
 	Train& operator=(Train&& other) noexcept;
 
+	size_t findWagon(int wagonId);
+
 	void addWagon(Wagon& wagon);
+	void removeWagon(int wagonID);
 
 	const int getDeparturePlatform() const;
 	const int getArrivalPlatform() const;
@@ -49,8 +52,8 @@ public:
 
 	const char* printTime(struct tm field) const;
 
-	void printWagons(); // TODO
-	void printTrainInfo(); // TODO
+	void printWagons();
+	void printTrainInfo();
 
 	~Train();
 };

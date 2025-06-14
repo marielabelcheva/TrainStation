@@ -11,6 +11,7 @@ FirstClassWagon::FirstClassWagon(double basePrice, double comfortFactor, bool in
 {
 	this->includeFood = includeFood;
 	setComfortFactor(comfortFactor);
+	setWagonType("First Class");
 }
 
 void FirstClassWagon::setComfortFactor(double factor)

@@ -6,12 +6,15 @@ class Wagon
 	int seatsCount;
 	int id;
 	double basePrice;
+	char* wagonType;
 
 	void setID();
 	void setSeats(int count);
 	void setBasePrice(double basePrice);
 
 protected:
+	
+	void setWagonType(const char* type);
 	virtual void copyFrom(const Wagon& other);
 	virtual void free();
 	virtual void moveFrom(Wagon&& other);
@@ -36,6 +39,8 @@ public:
 	void printWagon() const;
 
 	void buyTicket(int seat);
+
+	const char* getWagonType() const;
 
 	virtual ~Wagon();
 };

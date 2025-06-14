@@ -11,6 +11,7 @@ PassengerClassWagon::PassengerClassWagon(double basePrice, double pricePerKilo, 
 {
 	setPricePerKiloOfLuggage(pricePerKilo);
 	setWeightOfLuggage(luggageWeight);
+	setWagonType("Passenger Class");
 }
 
 void PassengerClassWagon::setPricePerKiloOfLuggage(double price)
