@@ -162,9 +162,9 @@ void printRow(size_t charsOnRow, const char* text)
 
 void DiscountCard::printCard() const
 {
-	size_t charsCount = string::strLen(this->classType) + string::strLen("===") + string::strLen(" card ===");
+	size_t charsCount = string::strLen(this->classType) + string::strLen("===") + string::strLen(" card===");
 
-	std::cout << "|===" << this->classType << " card ===|\n|";
+	std::cout << "|===" << this->classType << " card===|\n|";
 
 	printRow(charsCount, getCardHolder());
 	printRow(charsCount, this->fieldInfo);
