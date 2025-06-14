@@ -1,6 +1,7 @@
 #pragma once
 #include <stdlib.h>
 #include <ctime>
+#include <iostream>
 
 namespace ID_Resources
 {
@@ -25,7 +26,7 @@ namespace string
 	{
 		if (!str)
 		{
-			throw - 1;
+			throw std::invalid_argument("Invalid data!");
 		}
 
 		size_t result = 0;
@@ -43,7 +44,7 @@ namespace string
 	{
 		if (!source || !destination)
 		{
-			throw - 1;
+			throw std::invalid_argument("Invalid data!");
 		}
 
 		while (*source)
