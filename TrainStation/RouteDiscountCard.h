@@ -3,8 +3,9 @@
 
 class RouteDiscountCard : public DiscountCard
 {
-	char* destinationName;
+	void setDiscount() override;
 
-	// G6
+public:
+	RouteDiscountCard(const char* name, const char* destination);
 };
 

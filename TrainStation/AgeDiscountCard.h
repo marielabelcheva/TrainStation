@@ -8,8 +8,6 @@ class AgeDiscountCard : public DiscountCard
 	void setAge(int age);
 	void setDiscount() override;
 
-	//void copyFrom(const AgeDiscountCard& other) override;
-
 	const char* getFieldInfo() const;
 public:
 	AgeDiscountCard(const char* name, int age);
