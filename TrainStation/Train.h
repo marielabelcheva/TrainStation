@@ -50,6 +50,7 @@ public:
 
 	const int getDeparturePlatform() const;
 	const int getArrivalPlatform() const;
+	Wagon** getWagons() const;
 
 	const int getTrainId() const;
 

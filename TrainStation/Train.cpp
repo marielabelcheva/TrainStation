@@ -233,6 +233,11 @@ const int Train::getTrainId() const
 	return this->id;
 }
 
+Wagon** Train::getWagons() const
+{
+	return this->wagons;
+}
+
 const char* Train::printDepartureTime() const
 {
 	char* date = new char[constants::MAX_DATETIME_SIZE];
@@ -261,7 +266,7 @@ void Train::printWagons()
 
 void Train::printTrainInfo()
 {
-	std::cout << "===Train ID: " << this->getTrainId() << "===\n";
+	std::cout << "===Train ID: " << this->getTrainId() << " ===\n";
 	std::cout << "Strarting station: " << this->departureStation->getName() << "\n";
 	std::cout << "Destination: " << this->arrivalStation->getName() << "\n";
 	std::cout << "Distance:" << this->distanceBetweenStationsInKM << "km\n";

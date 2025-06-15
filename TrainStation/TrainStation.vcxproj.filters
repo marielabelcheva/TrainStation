@@ -99,4 +99,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="CardIDs.txt" />
+    <Text Include="Admins.txt" />
+    <Text Include="DiscountCards.txt" />
+    <Text Include="Wagons.txt" />
+    <Text Include="Trains.txt" />
+    <Text Include="Stations.txt" />
+  </ItemGroup>
 </Project>
